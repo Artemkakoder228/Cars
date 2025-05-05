@@ -59,16 +59,18 @@ html, body {
 }
 
 .filter li {
-    padding: 5px;
-    background-color: #eee;
+    padding: 10px;
+    background-color: #007bff; /* Синій фон */
+    color: #ffffff; /* Білий текст */
     margin-bottom: 5px;
     text-align: center;
     cursor: pointer;
     border-radius: 3px;
+    transition: background-color 0.3s ease;
 }
 
 .filter li:hover {
-    background-color: #ddd;
+    background-color: #0056b3; /* Темніший синій при наведенні */
 }
 
 .gallery {
