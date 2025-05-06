@@ -7,32 +7,34 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <header class="main-menu">
-            <div class="brand">Car Models Viewer</div>
-        </header>
-        <div class="content">
-            <div class="filters">
-                <div class="filter" id="brand-menu">
-                    <h3>Brand</h3>
-                    <ul id="brand-list"></ul>
-                </div>
-                <div class="filter" id="model-menu">
-                    <h3>Model</h3>
-                    <ul id="model-list"></ul>
-                </div>
-                <div class="filter" id="year-menu">
-                    <h3>Year</h3>
-                    <ul id="year-list"></ul>
-                </div>
+    <div class="main-wrapper">
+        <header>
+            <div class="header-options">
+                <label>
+                    <input type="radio" name="dataFile" value="sample.json" checked>
+                    Cars Dataset 1
+                </label>
+                <label>
+                    <input type="radio" name="dataFile" value="sample2.json">
+                    Cars Dataset 2
+                </label>
+                <label>
+                    <input type="radio" name="dataFile" value="sample3.json">
+                    Cars Dataset 3
+                </label>
             </div>
-            <main class="gallery">
-                <h2>Gallery</h2>
-                <div class="gallery-items">
-                    <!-- Gallery items will be dynamically added here -->
-                </div>
-            </main>
+        </header>
+        <h1>Car Models Viewer</h1>
+        <div class="content-viewer">
+            <div class="section-brands" id="section-brands"></div>
+            <div class="section-models" id="section-models"></div>
+            <div class="section-years" id="section-years"></div>
+            <div class="section-images" id="section-images"></div>
         </div>
+    </div>
+    <div id="image-modal" class="image-modal">
+        <span class="close-btn" id="close-btn">&times;</span>
+        <img class="modal-img" id="modal-img">
     </div>
     <script src="js/script.js"></script>
 </body>

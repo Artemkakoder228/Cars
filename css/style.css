@@ -1,130 +1,184 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+body {
     font-family: Arial, sans-serif;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.main-menu {
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-}
-
-.brand {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.content {
-    display: flex;
-    height: 100%;
-}
-
-.filters {
-    display: flex; /* Змінено на flex для розташування в рядок */
-    flex-direction: row; /* Розташування фільтрів у рядок */
-    gap: 10px;
-    background-color: #f4f4f4;
-    padding: 10px;
-    width: 50%; /* Ліва частина займає 50% */
-    overflow-y: auto;
-}
-
-.filter {
-    flex: 1; /* Кожен стовпчик займає однакову ширину */
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-}
-
-.filter h3 {
-    margin: 0 0 10px;
-    font-size: 18px;
-    text-align: center;
-}
-
-.filter ul {
-    list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
 }
 
-.filter li {
+header {
     padding: 10px;
-    background-color: #007bff; /* Синій фон */
-    color: #ffffff; /* Білий текст */
-    margin-bottom: 5px;
+    background-color: #f1f1f1;
     text-align: center;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.header-options label {
+    display: inline-block;
+    padding: 10px 20px; /* Збільшено внутрішній відступ */
+    margin: 10px; /* Додано більший зовнішній відступ */
+    border: 2px solid #007bff;
+    border-radius: 20px;
+    background-color: #f1f1f1;
+    color: #007bff;
+    font-size: 16px; /* Збільшено розмір тексту */
     cursor: pointer;
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
-.filter li:hover {
-    background-color: #0056b3; /* Темніший синій при наведенні */
+.header-options input[type="radio"] {
+    display: none; /* Приховуємо стандартний вигляд радіокнопок */
 }
 
-.gallery {
-    flex-grow: 1;
+.header-options input[type="radio"]:checked + label {
+    background-color: #007bff;
+    color: white;
+    transform: scale(1.1); /* Збільшення вибраного елемента */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Додаємо тінь */
+}
+
+.header-options label:hover {
+    background-color: #0056b3;
+    color: #ffcc00;
+    transform: scale(1.05); /* Легке збільшення при наведенні */
+}
+
+.main-wrapper {
+    max-width: 1200px;
+    margin: 20px auto;
     padding: 20px;
-    background-color: #f0f0f0;
-    width: 50%; /* Права частина займає 50% */
-    overflow-y: auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.gallery-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.gallery-item {
-    width: 200px;
-    height: 150px;
-    background-color: #ccc;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+h1 {
     text-align: center;
+    margin-bottom: 20px;
+    padding: 15px; /* Додано внутрішній відступ */
+    background-color: #007bff; /* Додано фон */
+    color: white; /* Колір тексту */
+    border-radius: 8px; /* Закруглені кути */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Додано тінь */
 }
 
-.gallery-item img {
+.content-viewer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr;
+    gap: 10px;
+    padding: 20px; /* Додано внутрішній відступ */
+    background-color: #e9ecef; /* Новий світло-сірий фон */
+    border-radius: 10px; /* Закруглені кути */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легка тінь */
+}
+
+.content-viewer div {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: 3px solid #0056b3; /* Збільшено товщину бордера та змінено колір */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1); /* Збільшення кнопки */
+    color: #ffcc00; /* Зміна кольору тексту */
+    border-color: #003f7f; /* Темніший бордер при наведенні */
+}
+
+.section-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+
+.section-images img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.section-images img:hover {
+    transform: scale(1.05);
+}
+
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    background-color: rgba(0, 0, 0, 0.8); /* Темний фон */
+    display: flex; /* Використовуємо flex для центрування */
+    justify-content: center; /* Горизонтальне центрування */
+    align-items: center; /* Вертикальне центрування */
 }
 
-.gallery-item p {
-    font-size: 14px;
-    color: #666;
-    margin: 5px 0 0;
+.modal-img {
+    max-width: 80%; /* Максимальна ширина зображення */
+    max-height: 80%; /* Максимальна висота зображення */
+    border-radius: 8px; /* Закруглені кути */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тінь для зображення */
+    transition: transform 0.3s ease; /* Анімація при появі */
 }
 
-.button {
-    font-size: 16px;
-    color: #ffffff; /* Білий текст */
-    background: #007bff; /* Синій фон */
-    padding: 10px;
-    text-align: center;
-    border-radius: 5px;
+.image-modal.show .modal-img {
+    transform: scale(1.1); /* Легке збільшення при появі */
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
     cursor: pointer;
-    border: none;
+    z-index: 1001; /* Вище за зображення */
 }
 
-.button:hover {
-    background: #0056b3; /* Темніший синій при наведенні */
+.close-btn:hover,
+.close-btn:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+
+.footer-options label {
+    margin: 0 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.footer-options input[type="radio"] {
+    margin-right: 5px;
 }
