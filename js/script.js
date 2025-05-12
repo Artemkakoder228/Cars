@@ -179,3 +179,27 @@ fetchJSON(['js/sample.json']);
 
 // Виклик функції для завантаження зображень
 loadSliderImages();
+
+// Показ модального вікна при завантаженні сторінки
+window.onload = () => {
+    const welcomeModal = document.getElementById('welcome-modal');
+    const closeWelcomeBtn = document.getElementById('close-welcome-btn');
+
+    // Перевіряємо, чи існує модальне вікно
+    if (welcomeModal) {
+        // Показуємо модальне вікно
+        welcomeModal.style.display = 'flex';
+
+        // Закриваємо модальне вікно при натисканні кнопки
+        closeWelcomeBtn.onclick = () => {
+            welcomeModal.style.display = 'none';
+        };
+
+        // Закриваємо модальне вікно при кліку поза його межами
+        window.onclick = (event) => {
+            if (event.target === welcomeModal) {
+                welcomeModal.style.display = 'none';
+            }
+        };
+    }
+};
