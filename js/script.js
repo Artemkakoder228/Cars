@@ -6,128 +6,176 @@ const imageModal = document.getElementById('image-modal');
 const modalImg = document.getElementById('modal-img');
 const closeBtn = document.getElementById('close-btn');
 const dataFileRadios = document.querySelectorAll('input[name="dataFile"]');
+const slider = document.getElementById('image-slider');
 
-// Load JSON data
-function fetchJSON(file) {
+let currentData = {}; // Кеш для збереження даних
+
+// Завантаження JSON-файлу
+function fetchJSON(files) {
     brandsSection.innerHTML = '';
     modelsSection.innerHTML = '';
     yearsSection.innerHTML = '';
     imagesSection.innerHTML = '';
+    slider.innerHTML = '';
 
-    fetch(file)
+    fetch(files[0])
         .then(response => response.json())
         .then(data => {
+            currentData = data; // Зберігаємо дані в кеш
             const carData = processCarData(data);
             renderBrands(carData);
+            loadSliderImagesFromData(data);
         })
-        .catch(error => console.error(`Error loading ${file}:`, error));
+        .catch(error => console.error(`Error loading file:`, error));
 }
 
-// Event listener for radio buttons
-dataFileRadios.forEach(radio => {
-    radio.addEventListener('change', (event) => {
-        const selectedFile = event.target.value;
-        fetchJSON(selectedFile);
-    });
-});
-
-// Initial load
-fetchJSON('js/sample.json');
-
-// Parse JSON data into a structured format
+// Обробка даних JSON
 function processCarData(data) {
     const carData = {};
     for (const path in data) {
         const parts = path.split('/');
-        if (parts.length < 4) {
-            console.warn(`Invalid path format: ${path}`);
-            continue;
-        }
+        if (parts.length < 4) continue;
 
         const [brand, model, year] = parts;
-        if (!carData[brand]) carData[brand] = {};
-        if (!carData[brand][model]) carData[brand][model] = {};
-        if (!carData[brand][model][year]) carData[brand][model][year] = [];
+        carData[brand] = carData[brand] || {};
+        carData[brand][model] = carData[brand][model] || {};
+        carData[brand][model][year] = carData[brand][model][year] || [];
         carData[brand][model][year].push(data[path]);
     }
     return carData;
 }
 
-// Display car brands
+// Відображення брендів
 function renderBrands(carData) {
-    brandsSection.innerHTML = '';
-    const sortedBrands = Object.keys(carData).sort();
-    sortedBrands.forEach(brand => {
+    const fragment = document.createDocumentFragment();
+    Object.keys(carData).sort().forEach(brand => {
         const button = document.createElement('button');
         button.textContent = brand;
         button.onclick = () => renderModels(carData[brand]);
-        brandsSection.appendChild(button);
+        fragment.appendChild(button);
     });
+    brandsSection.appendChild(fragment);
 }
 
-// Display car models
+// Відображення моделей
 function renderModels(models) {
     modelsSection.innerHTML = '';
     yearsSection.innerHTML = '';
     imagesSection.innerHTML = '';
-    const sortedModels = Object.keys(models).sort();
-    sortedModels.forEach(model => {
+    const fragment = document.createDocumentFragment();
+    Object.keys(models).sort().forEach(model => {
         const button = document.createElement('button');
         button.textContent = model;
         button.onclick = () => renderYears(models[model]);
-        modelsSection.appendChild(button);
+        fragment.appendChild(button);
     });
+    modelsSection.appendChild(fragment);
 }
 
-// Display car years
+// Відображення років
 function renderYears(years) {
     yearsSection.innerHTML = '';
     imagesSection.innerHTML = '';
-    const sortedYears = Object.keys(years).sort();
-    sortedYears.forEach(year => {
+    const fragment = document.createDocumentFragment();
+    Object.keys(years).sort().forEach(year => {
         const button = document.createElement('button');
         button.textContent = year;
         button.onclick = () => renderImages(years[year]);
-        yearsSection.appendChild(button);
+        fragment.appendChild(button);
     });
+    yearsSection.appendChild(fragment);
 }
 
-// Display car images
+// Відображення зображень
 function renderImages(images) {
     imagesSection.innerHTML = '';
+    const fragment = document.createDocumentFragment();
     images.forEach(image => {
         const img = new Image();
         img.src = image;
-
-        img.onload = () => {
-            if (img.naturalWidth > 1 && img.naturalHeight > 1) {
-                const imgElement = document.createElement('img');
-                imgElement.src = image;
-                imgElement.onclick = () => openImageModal(image);
-                imagesSection.appendChild(imgElement);
-            }
-        };
-
+        img.loading = 'lazy'; // Lazy loading
         img.onerror = () => {
-            console.warn(`Image not found or invalid: ${image}`);
+            img.src = 'path/to/placeholder.jpg'; // Замінюємо на зображення-заглушку
         };
+        img.onclick = () => openImageModal(image);
+        fragment.appendChild(img);
     });
+    imagesSection.appendChild(fragment);
 }
 
-// Open modal
+// Відкриття модального вікна
 function openImageModal(imageSrc) {
     imageModal.style.display = 'block';
     modalImg.src = imageSrc;
 }
 
-// Close modal
+// Закриття модального вікна
 closeBtn.onclick = () => {
     imageModal.style.display = 'none';
 };
 
-// Close modal when clicking outside the image
 window.onclick = (event) => {
     if (event.target === imageModal) {
         imageModal.style.display = 'none';
     }
 };
+
+// Статичний масив зображень
+const staticImages = [
+    'images/1513313.jpg',
+    'images/c24e82738d697d0ab4e74d9750582ae1bbf71a9f.jpg',
+    'images/im-dodge_challenger_srt_demon_8.jpeg',
+    'images/image5-1.png',
+    'images/images.jpg',
+    'images/Kia-Sportage-2020-f3b-huge-1551.jpg'
+];
+
+// Завантаження зображень у слайдер
+function loadSliderImages() {
+    slider.innerHTML = ''; // Очищаємо слайдер перед додаванням нових зображень
+    const fragment = document.createDocumentFragment();
+
+    staticImages.forEach(imageSrc => {
+        const img = document.createElement('img');
+        img.src = imageSrc;
+        img.loading = 'lazy'; // Lazy loading
+        img.onerror = () => {
+            img.src = 'images/placeholder.jpg'; // Замінюємо на зображення-заглушку
+        };
+        fragment.appendChild(img);
+    });
+
+    slider.appendChild(fragment);
+    startImageSlider();
+}
+
+// Автоматична прокрутка слайдера
+function startImageSlider() {
+    let scrollAmount = 0;
+    const maxScroll = slider.scrollWidth;
+
+    function slide() {
+        scrollAmount -= 2; // Плавна прокрутка
+        if (Math.abs(scrollAmount) >= maxScroll) {
+            scrollAmount = 0;
+        }
+        slider.style.transform = `translateX(${scrollAmount}px)`;
+        requestAnimationFrame(slide);
+    }
+
+    slide();
+}
+
+// Обробка вибору файлу
+dataFileRadios.forEach(radio => {
+    radio.addEventListener('change', (event) => {
+        const selectedFile = event.target.value;
+        fetchJSON([`js/${selectedFile}`]);
+    });
+});
+
+// Початкове завантаження
+fetchJSON(['js/sample.json']);
+
+// Виклик функції для завантаження зображень
+loadSliderImages();

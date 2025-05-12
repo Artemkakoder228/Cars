@@ -3,25 +3,26 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
+    font-size: 18px; /* Збільшено базовий розмір шрифту */
 }
 
 header {
-    padding: 10px;
+    padding: 20px; /* Збільшено відступи */
     background-color: #f1f1f1;
     text-align: center;
     border-bottom: 1px solid #ddd;
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* Збільшено відступ знизу */
 }
 
 .header-options label {
     display: inline-block;
-    padding: 10px 20px; /* Збільшено внутрішній відступ */
-    margin: 10px; /* Додано більший зовнішній відступ */
-    border: 2px solid #007bff;
-    border-radius: 20px;
+    padding: 15px 30px; /* Збільшено внутрішній відступ */
+    margin: 15px; /* Збільшено зовнішній відступ */
+    border: 3px solid #007bff; /* Збільшено товщину бордера */
+    border-radius: 25px; /* Більше закруглення */
     background-color: #f1f1f1;
     color: #007bff;
-    font-size: 16px; /* Збільшено розмір тексту */
+    font-size: 20px; /* Збільшено розмір тексту */
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
@@ -33,62 +34,64 @@ header {
 .header-options input[type="radio"]:checked + label {
     background-color: #007bff;
     color: white;
-    transform: scale(1.1); /* Збільшення вибраного елемента */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Додаємо тінь */
+    transform: scale(1.15); /* Збільшення вибраного елемента */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Додаємо більшу тінь */
 }
 
 .header-options label:hover {
     background-color: #0056b3;
     color: #ffcc00;
-    transform: scale(1.05); /* Легке збільшення при наведенні */
+    transform: scale(1.1); /* Легке збільшення при наведенні */
 }
 
 .main-wrapper {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
+    max-width: 1400px; /* Збільшено ширину */
+    margin: 30px auto; /* Збільшено зовнішній відступ */
+    padding: 30px; /* Збільшено внутрішній відступ */
     background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; /* Більше закруглення */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Більша тінь */
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
-    padding: 15px; /* Додано внутрішній відступ */
-    background-color: #007bff; /* Додано фон */
-    color: white; /* Колір тексту */
-    border-radius: 8px; /* Закруглені кути */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Додано тінь */
+    margin-bottom: 30px; /* Збільшено відступ знизу */
+    padding: 20px; /* Збільшено внутрішній відступ */
+    background-color: #007bff;
+    color: white;
+    font-size: 36px; /* Збільшено розмір тексту */
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Більша тінь */
 }
 
 .content-viewer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 2fr;
-    gap: 10px;
-    padding: 20px; /* Додано внутрішній відступ */
-    background-color: #e9ecef; /* Новий світло-сірий фон */
-    border-radius: 10px; /* Закруглені кути */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легка тінь */
+    gap: 20px; /* Збільшено відстань між секціями */
+    padding: 30px; /* Збільшено внутрішній відступ */
+    background-color: #e9ecef;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .content-viewer div {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 10px;
+    border: 2px solid #ddd; /* Збільшено товщину бордера */
+    border-radius: 8px;
+    padding: 20px; /* Збільшено внутрішній відступ */
     overflow-y: auto;
-    max-height: 400px;
+    max-height: 500px; /* Збільшено висоту */
 }
 
 button {
     display: block;
     width: 100%;
-    margin-bottom: 5px;
-    padding: 10px;
+    margin-bottom: 10px; /* Збільшено відступ між кнопками */
+    padding: 15px; /* Збільшено внутрішній відступ */
     background-color: #007bff;
     color: white;
-    border: 3px solid #0056b3; /* Збільшено товщину бордера та змінено колір */
-    border-radius: 4px;
+    font-size: 18px; /* Збільшено розмір тексту */
+    border: 3px solid #0056b3;
+    border-radius: 6px;
     cursor: pointer;
     transition: transform 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
@@ -96,29 +99,29 @@ button {
 button:hover {
     background-color: #0056b3;
     transform: scale(1.1); /* Збільшення кнопки */
-    color: #ffcc00; /* Зміна кольору тексту */
-    border-color: #003f7f; /* Темніший бордер при наведенні */
+    color: #ffcc00;
+    border-color: #003f7f;
 }
 
 .section-images {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Збільшено мінімальний розмір */
+    gap: 30px; /* Збільшено відстань між зображеннями */
+    padding: 20px;
 }
 
 .section-images img {
     width: 100%;
-    height: 200px;
+    height: 250px; /* Збільшено висоту */
     object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 12px; /* Більше закруглення */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Більша тінь */
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease;
 }
 
 .section-images img:hover {
-    transform: scale(1.05);
+    transform: scale(1.1); /* Більше збільшення при наведенні */
 }
 
 .image-modal {
@@ -129,33 +132,29 @@ button:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Темний фон */
-    display: flex; /* Використовуємо flex для центрування */
-    justify-content: center; /* Горизонтальне центрування */
-    align-items: center; /* Вертикальне центрування */
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-img {
-    max-width: 80%; /* Максимальна ширина зображення */
-    max-height: 80%; /* Максимальна висота зображення */
-    border-radius: 8px; /* Закруглені кути */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тінь для зображення */
-    transition: transform 0.3s ease; /* Анімація при появі */
-}
-
-.image-modal.show .modal-img {
-    transform: scale(1.1); /* Легке збільшення при появі */
+    max-width: 90%; /* Збільшено максимальну ширину */
+    max-height: 90%; /* Збільшено максимальну висоту */
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
 }
 
 .close-btn {
     position: absolute;
-    top: 20px;
-    right: 35px;
+    top: 30px; /* Збільшено відступ зверху */
+    right: 50px; /* Збільшено відступ справа */
     color: white;
-    font-size: 40px;
+    font-size: 50px; /* Збільшено розмір */
     font-weight: bold;
     cursor: pointer;
-    z-index: 1001; /* Вище за зображення */
+    z-index: 1001;
 }
 
 .close-btn:hover,
@@ -163,6 +162,38 @@ button:hover {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
+}
+
+.image-slider-wrapper {
+    width: 90%; /* Ширина блоку */
+    height: 300px; /* Висота блоку */
+    margin: 20px auto; /* Відступи зверху і знизу */
+    overflow: hidden; /* Приховуємо зайві частини зображень */
+    border-radius: 12px; /* Закруглені кути */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тінь */
+    background-color: #f1f1f1; /* Фон */
+    position: relative; /* Для позиціонування внутрішніх елементів */
+}
+
+.image-slider {
+    display: flex; /* Вирівнюємо зображення в ряд */
+    height: 100%;
+    transition: transform 0.5s ease-in-out; /* Анімація прокрутки */
+}
+
+.image-slider img {
+    height: 100%; /* Висота зображень */
+    width: auto; /* Пропорційна ширина */
+    margin-right: 10px; /* Відступ між зображеннями */
+    border-radius: 8px; /* Закруглені кути */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тінь */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавний перехід */
+}
+
+.image-slider img:hover {
+    transform: scale(1.1); /* Збільшення зображення */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Більша тінь */
+    cursor: pointer; /* Змінюємо курсор на вказівник */
 }
 
 footer {

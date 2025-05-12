@@ -10,15 +10,17 @@
     <div class="main-wrapper">
         <header>
             <div class="header-options">
-                <label>
+                <label onclick="fetchJSON(['js/sample.json'])">
                     <input type="radio" name="dataFile" value="sample.json" checked>
                     Cars Dataset 1
                 </label>
-                <label>
+
+                <label onclick="fetchJSON(['js/sample2.json'])">
                     <input type="radio" name="dataFile" value="sample2.json">
                     Cars Dataset 2
                 </label>
-                <label>
+
+                <label onclick="fetchJSON(['js/sample3.json'])">
                     <input type="radio" name="dataFile" value="sample3.json">
                     Cars Dataset 3
                 </label>
@@ -30,6 +32,11 @@
             <div class="section-models" id="section-models"></div>
             <div class="section-years" id="section-years"></div>
             <div class="section-images" id="section-images"></div>
+        </div>
+    </div>
+    <div class="image-slider-wrapper">
+        <div class="image-slider" id="image-slider">
+            <!-- Зображення будуть додані динамічно через JavaScript -->
         </div>
     </div>
     <div id="image-modal" class="image-modal">
